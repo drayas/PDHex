@@ -1,0 +1,10 @@
+Creating a card
+  Change order of card entry form to kind of match the card's layout
+  There should be a drop-down for color (red/white/blue/green/black/artifact/colorless/gold/whatever)
+Index
+  Display flavor text if it's there
+  Display type
+  Display sub_type
+  Cost symbols (R/B/U/G/W) should have images
+Write edit/update for cards
+Look into existing Magic TG CSVs that we might use to import a giant card database
