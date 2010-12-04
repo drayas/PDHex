@@ -1,0 +1,14 @@
+<%= link_to "Create a new card", new_card_path %>
+<% for card in @cards do %>
+  <div class="card <%= card.color %>">
+    <div class="name"><%= card.name %></div>
+    <div class="cost"><%= card.cost %></div>
+    <div class="text"><%= card.text %></div>
+    <div class="stats">
+      <%= card.pretty_stats %>
+    </div>
+    <div class="delete">
+      <%= link_to 'Delete', card_path(card), :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+  </div>
+<% end %>

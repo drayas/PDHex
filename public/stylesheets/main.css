@@ -1,0 +1,81 @@
+body {
+  font-family:Lucida Grande,Arial,Helvetica,sans-serif;
+  font-size: 10px;
+}
+
+/****************************
+CARD
+*****************************/
+.card {
+  height: 300px;
+  width: 200px;
+  border: 1px solid black;
+  position: relative;
+  margin: 5px;
+  float: left;
+}
+.name {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 140px;
+  overflow: hidden;
+}
+.cost {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  overflow: hidden;
+}
+.text {
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  right: 5px;
+  overflow: hidden;
+}
+.stats {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  overflow: hidden;
+}
+.card .delete {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  overflow: hidden;
+}
+/****************************
+END OF CARD
+*****************************/
+
+.blue {
+  border: 5px solid blue; 
+}
+.red {
+  border: 5px solid red; 
+}
+.black {
+  border: 5px solid black; 
+}
+.white {
+  border: 5px solid white; 
+}
+.green {
+  border: 5px solid green; 
+}
+
+form label {
+  display: block;
+}
+form input {
+  margin-bottom: 10px;
+}
+
+.error {
+  border: 3px solid red;
+  width: 300px;
+  padding: 5px;
+  margin: 5px;
+}
