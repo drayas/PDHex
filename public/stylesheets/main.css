@@ -6,13 +6,21 @@ body {
 /****************************
 CARD
 *****************************/
+.card_container {
+	border: 5px solid gray;
+	position: relative;
+	height: 300px;
+	width: 200px;
+	float: left;
+	margin: 5px;
+}
+
 .card {
-  height: 300px;
-  width: 200px;
-  border: 1px solid black;
-  position: relative;
-  margin: 5px;
-  float: left;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
 }
 .name {
   position: absolute;
@@ -79,7 +87,7 @@ CARD COLORS
   border: 8px solid black; 
 }
 .white {
-  border: 8px solid white; 
+  background-color: #ffffcc; 
 }
 .green {
   border: 8px solid green; 
