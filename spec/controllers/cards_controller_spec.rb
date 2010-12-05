@@ -18,6 +18,39 @@ describe CardsController do
      end
   end
 
+  describe 'edit' do
+     it 'should load an existing card' do
+      @card = Card.new
+      Card.should_receive(:find).and_return(@card)
+      get :edit
+      assigns(:card).should_not be_nil
+     end
+  end
+
+  describe 'update' do
+    it 'should update the card and redirect to the listing' do
+      @card = Card.new
+      Card.should_receive(:find).and_return(@card)
+      @card.should_receive(:update_attributes).and_return(true)
+
+      put :update, :id => @card.id, :card => @card.attributes
+
+      response.should redirect_to cards_path
+    end
+    it 'should set an error message and return to the edit page in the event of error' do
+      @card = Card.new
+      Card.should_receive(:find).and_return(@card)
+      @card.should_receive(:update_attributes).and_return(false)
+
+      put :update, :id => @card.id, :card => @card.attributes
+
+      assigns(:card).should == @card
+      flash[:error].should_not be_nil
+      response.should_not redirect_to cards_path
+
+    end
+  end
+
   describe 'create' do
     before(:each) do
       @card = Card.new

@@ -27,12 +27,27 @@ CARD
   right: 5px;
   overflow: hidden;
 }
-.text {
+.type{
   position: absolute;
-  top: 50px;
+  top: 140px;
   left: 5px;
   right: 5px;
   overflow: hidden;
+}
+.text {
+  position: absolute;
+  top: 160px;
+  height: 110px;
+  left: 5px;
+  right: 5px;
+  overflow: hidden;
+  padding: 3px;
+  background-color: AntiqueWhite;
+  border: 1px inset gray;
+}
+.flavor {
+  margin-top: 15px;
+  font-style: italic;
 }
 .stats {
   position: absolute;
@@ -40,7 +55,7 @@ CARD
   right: 5px;
   overflow: hidden;
 }
-.card .delete {
+.card .actions {
   position: absolute;
   bottom: 5px;
   left: 5px;
@@ -50,21 +65,36 @@ CARD
 END OF CARD
 *****************************/
 
+
+/****************************
+CARD COLORS
+*****************************/
 .blue {
-  border: 5px solid blue; 
+  border: 8px solid blue; 
 }
 .red {
-  border: 5px solid red; 
+  border: 8px solid red; 
 }
 .black {
-  border: 5px solid black; 
+  border: 8px solid black; 
 }
 .white {
-  border: 5px solid white; 
+  border: 8px solid white; 
 }
 .green {
-  border: 5px solid green; 
+  border: 8px solid green; 
 }
+.gold {
+  border: 8px solid gold; 
+}
+.artifact {
+  border: 8px solid gray; 
+}
+.colorless {
+}
+/****************************
+END CARD COLORS
+*****************************/
 
 form label {
   display: block;
@@ -79,3 +109,35 @@ form input {
   padding: 5px;
   margin: 5px;
 }
+
+/***************************
+ DECK BUILDER
+***************************/
+.card_table {
+  border: 1px inset black;
+  padding; 3px;
+  font-size: 10px;
+  width: 100%;
+  vertical-align: top;
+}
+.card_table tr.even {
+  background-color: lightgray;
+}
+tr:hover {
+  background-color: black !important;
+  color: white !important;
+}
+#in_use {
+	width: 40%;
+	float: left;
+}
+#available {
+	width: 40%;
+	float: left;
+}
+#preview {
+	float: right;
+}
+/***************************
+ END DECK BUILDER
+***************************/

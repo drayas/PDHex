@@ -6,7 +6,7 @@ describe Card do
       @valid_params = {
         :name      => "foo",
         :text      => "bar",
-        :card_type => "baz",
+        :card_type => "creature",
         :color     => "blue"
       }
       @invalid_params = {
@@ -19,6 +19,18 @@ describe Card do
 
     it "Should not be valid with invalid params" do
       Card.new(@invalid_params).valid?.should be_false
+    end
+    
+    it "Should not allow an invalid color" do
+      card = Card.new(@valid_params)
+      card.color = "orange"
+      card.valid?.should be_false
+    end
+
+    it "Should not allow an invalid card_type" do
+      card = Card.new(@valid_params)
+      card.card_type = "not_a_type"
+      card.valid?.should be_false
     end
   end # validations
 

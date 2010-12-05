@@ -1,0 +1,10 @@
+<h1>Decks</h1>
+<% if @decks.empty? %>
+  No decks!<br/>
+<% end %>
+<% for deck in @decks do %>
+  <%= deck.name %> | <%= link_to "Edit", edit_deck_path(deck) %> | <%= link_to "Builder", deck_path(deck) %><br/>
+<% end %>
+<hr />
+
+<%= link_to "Create a new deck", new_deck_path %>

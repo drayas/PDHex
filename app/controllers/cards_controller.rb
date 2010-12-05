@@ -8,6 +8,20 @@ class CardsController < ApplicationController
     @card = Card.new
   end
 
+  def edit
+    @card = Card.find(params[:id])
+  end
+
+  def update
+    @card = Card.find(params[:id])
+    if @card.update_attributes(params[:card])
+      redirect_to cards_path
+    else
+      flash[:error] = @card.errors.full_messages.join("<br>")
+      render :action => :edit, :id => @card
+    end
+  end
+
   def create
     @card = Card.new(params[:card])
     if @card.save

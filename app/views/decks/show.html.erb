@@ -1,0 +1,14 @@
+<h1>Editing Deck <%= @deck.name %></h1>
+<div id="preview">
+  <% unless @cards.empty? %>
+    <%= render :partial => 'cards/card', :locals => {:card => @cards.first} %>
+  <% end %>
+</div>
+<div id="in_use">
+  <h2>Cards in this deck</h2>
+  <%= render :partial => 'cards/card_table', :locals => {:cards => @cards_in_deck} %>
+</div>
+<div id="available">
+  <h2>Cards available</h2>
+  <%= render :partial => 'cards/card_table', :locals => {:cards => @cards} %>
+</div>

@@ -1,0 +1,6 @@
+<% form_for @deck do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit "Save my deck!"%>
+  </p>
+<% end %>

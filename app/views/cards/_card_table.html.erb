@@ -1,0 +1,23 @@
+<table class="card_table">
+	<thead>
+		<td>Name</td>
+		<td>Cost</td>
+		<td>Type</td>
+		<td>Text</td>
+		<td>Stats</td>
+	</thead>
+	<% for card in cards do %>
+		<tr onmouseover="showCard(<%= card.id %>)" class="<%= cycle("even", "odd") %>">
+			<td><%= card.name %></td>
+			<td><%= card.cost %></td>
+			<td><%= card.type %></td>
+			<td><%= card.text %></td>
+			<td>
+				<%= card.pretty_stats %>
+				<div id="card_<%= card.id %>" style="display: none;">
+					<%= render :partial => 'cards/card', :locals => {:card => card} %>
+				</div>
+			</td>
+		</tr>
+	<% end %>
+</table>

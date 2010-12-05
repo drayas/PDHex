@@ -1,0 +1,21 @@
+<div class="card <%= card.color %>">
+  <div class="name"><%= card.name %></div>
+  <div class="cost"><%= card.cost %></div>
+  <div class="type">
+   <%= card.card_type.titlecase %> 
+   <%= " -- #{card.card_sub_type.titlecase}" unless card.card_sub_type.blank? %>
+  </div>
+  <div class="text">
+    <%= card.text %>
+    <% if card.flavor %>
+      <div class="flavor"><%= card.flavor %></div>
+    <% end %>
+  </div>
+  <div class="stats">
+    <%= card.pretty_stats %>
+  </div>
+  <div class="actions">
+      <%= link_to 'Edit', edit_card_path(card) %>
+      <%= link_to 'Delete', card_path(card), :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div>

@@ -1,25 +1,6 @@
 <% form_for :card, :url => cards_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :toughness %>
-  <%= f.text_field :toughness %>
-  <%= f.label :cost %>
-  <%= f.text_field :cost %>
-  <%= f.label :card_type %>
-  <%= f.text_field :card_type %>
-  <%= f.label :card_sub_type %>
-  <%= f.text_field :card_sub_type %>
-  <%= f.label :text %>
-  <%= f.text_field :text %>
-  <%= f.label :power %>
-  <%= f.text_field :power %>
-  <%= f.label :color %>
-  <%= f.text_field :color %>
-  <%= f.label :flavor %>
-  <%= f.text_field :flavor %>
-  
+  <%= render :partial => 'form', :locals => {:f => f} %>
   <p>
     <%= f.submit "Save my card!"%>
   </p>
 <% end %>
-
