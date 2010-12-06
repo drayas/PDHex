@@ -50,4 +50,22 @@ describe Card do
       @card.pretty_stats.should == ""
     end
   end
+
+  describe 'Font size for text' do 
+    before(:each) do 
+      @card = Card.new
+    end
+    it 'should default to 10px' do
+      @card.text = "foo"
+      @card.font_size.should == 10
+    end
+    it 'should go down to 9px if there are more than 30 words' do
+      @card.text = "foo " * 51
+      @card.font_size.should == 9
+    end
+    it 'should go down to 8px if there are more than 70 words' do
+      @card.text = "foo " * 101
+      @card.font_size.should == 8
+    end
+  end
 end # main

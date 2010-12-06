@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cards
   map.resources :decks
+  map.resources :users, :collection => {
+    :login        => :get,
+    :authenticate => :post
+  }
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

@@ -22,36 +22,65 @@ CARD
 	left: 0px;
 	right: 0px;
 }
+.card div {
+	padding: 2px;
+}
+.card .field {
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #444;
+}
+.field a, .field a:visited, .field a:active, .field a:hover {
+	color: black;
+}
+.title {
+	height: 10px;
+	position: absolute;
+	top: 5px;
+	left: 8px;
+	right: 8px;
+	font-size: 9px;
+}
 .name {
   position: absolute;
-  top: 5px;
-  left: 5px;
+	top: 0px;
+  left: 3px;
   width: 140px;
+	height: 10px;
   overflow: hidden;
 }
 .cost {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 8px;
   overflow: hidden;
 }
-.type{
+.image {
+	position: absolute;
+	top: 28px;
+	right: 8px;
+	left: 8px;
+	height: 124px;
+	background:url(/images/cards/magic-cube.gif) repeat !important;
+	border: 1px solid #444;
+}
+.type {
   position: absolute;
-  top: 140px;
-  left: 5px;
-  right: 5px;
+  top: 157px;
+  left: 8px;
+  right: 8px;
   overflow: hidden;
 }
 .text {
   position: absolute;
-  top: 160px;
-  height: 110px;
-  left: 5px;
-  right: 5px;
-  overflow: hidden;
+  top: 177px;
+  left: 8px;
+  right: 8px;
+	bottom: 22px;
+  overflow: auto;
   padding: 3px;
   background-color: AntiqueWhite;
-  border: 1px inset gray;
+	font-size: 9px;
 }
 .flavor {
   margin-top: 15px;
@@ -59,14 +88,14 @@ CARD
 }
 .stats {
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: 6px;
+  right: 8px;
   overflow: hidden;
 }
 .card .actions {
   position: absolute;
   bottom: 5px;
-  left: 5px;
+  left: 8px;
   overflow: hidden;
 }
 /****************************
@@ -77,26 +106,47 @@ END OF CARD
 /****************************
 CARD COLORS
 *****************************/
+.green {
+	background:url(/images/cards/green_leather.jpg) repeat !important;
+}
+.green .field {
+	background-color: #D2E2D6;
+}
 .blue {
-  border: 8px solid blue; 
+	background:url(/images/cards/blue_background.jpg) repeat !important;
 }
-.red {
-  border: 8px solid red; 
-}
-.black {
-  border: 8px solid black; 
+.blue .field {
+	background-color: #BCDBEF;
 }
 .white {
-  background-color: #ffffcc; 
+	background:url(/images/cards/white_background.jpg) repeat !important;
 }
-.green {
-  border: 8px solid green; 
+.white .field {
+	background-color: #F4F2E0;
 }
-.gold {
-  border: 8px solid gold; 
+.black {
+	background:url(/images/cards/black_background.jpg) repeat !important;
+}
+.black .field {
+	background-color: #D3CAC6;
+}
+.red {
+	background:url(/images/cards/red_background.jpg) repeat !important;
+}
+.red .field {
+	background-color: #DEBDAC;
 }
 .artifact {
-  border: 8px solid gray; 
+	background:url(/images/cards/artifact_background.jpg) repeat !important;
+}
+.artifact .field {
+	background-color: #D2D6DB;
+}
+.gold {
+	background:url(/images/cards/gold_background.jpg) repeat !important;
+}
+.gold .field {
+	background-color: #E5D5A0;
 }
 .colorless {
 }

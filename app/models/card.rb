@@ -30,4 +30,10 @@ class Card < ActiveRecord::Base
     return true
   end
 
+  def font_size
+    return 10 if (self.text || "").split(' ').size <= 20
+    return 9 if (self.text || "").split(' ').size <= 40
+    return 7
+  end
+
 end
