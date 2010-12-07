@@ -1,0 +1,59 @@
+# /etc/bash.bashrc
+[ -f /etc/profile ] && . /etc/profile
+
+export PATH=$PATH:/home/ec2-user/pdhex/bin
+
+function find_git_branch {
+    local dir=. head
+    until [ "$dir" -ef / ]; do
+        if [ -f "$dir/.git/HEAD" ]; then
+            head=$(< "$dir/.git/HEAD")
+            if [[ $head == ref:\ refs/heads/* ]]; then
+                git_branch="${head#*/*/} "
+            elif [[ $head != '' ]]; then
+                git_branch='(detached) '
+            else
+                git_branch='(unknown) '
+            fi
+            return
+        fi
+        dir="../$dir"
+    done
+    git_branch=''
+}
+
+
+alias f='find . -name'
+alias gl='git log --since="1 week" --author="A. W" --pretty=oneline'
+alias gpg="git push github"
+alias gpp="git pull origin master && git push origin master"
+alias gpa="git push"
+alias gd="git diff"
+alias gss="git status"
+alias gap="git add -p"
+alias gb="git checkout -b"
+alias go="git checkout"
+alias gc="git commit"
+alias ll='ls -lhk'
+alias lsc='ls --color $@'
+alias lsf='ls -F | grep /'
+alias lsx='ls -F | grep \*'
+alias specs='spec -X spec/**/*.rb'
+alias dspecs='spec spec/**/*.rb'
+#Different colours if we're adaml or amaya
+
+cyan=$'\e[1;36m'
+magenta=$'\e[1;35m'
+normal=$'\e[m'
+
+PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+PS1="\[$magenta\]\$git_branch\[$cyan\]\t => \h:\w/\[$normal\] "
+
+
+#PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
+
+test -r /sw/bin/init.sh && . /sw/bin/init.sh
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+

@@ -199,3 +199,8 @@ tr:hover {
 /***************************
  END DECK BUILDER
 ***************************/
+#user_options {
+	width: 100%;
+	height: 22px;
+	text-align: right;
+}

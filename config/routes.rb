@@ -3,8 +3,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :decks
   map.resources :users, :collection => {
     :login        => :get,
+    :logout       => :get,
     :authenticate => :post
   }
+  map.root :controller => "landing"
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

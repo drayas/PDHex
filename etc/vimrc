@@ -1,0 +1,175 @@
+set shiftwidth=2
+" set our tabs to two spaces
+set ts=2
+
+" turn syntax highlighting on by default
+set term=xterm-color
+syntax on
+
+" set auto-indenting on for programming
+set ai
+
+" turn off compatibility with the old vi
+set nocompatible
+
+" turn on filetype plugins
+filetype plugin on
+
+" mode lines - vim instrutctions embedded in files
+set modelines=10
+
+" turn on the "visual bell" - which is much quieter than the "audio blink"
+set vb
+
+" highlight words when searching for them. 
+set hlsearch
+
+" automatically show matching brackets. works like it does in bbedit.
+set showmatch
+
+" do NOT put a carriage return at the end of the last line! if you are programming
+" for the web the default will cause http headers to be sent. that's bad.
+set binary noeol
+
+" make that backspace key work the way it should
+set backspace=indent,eol,start
+
+" syntax highlighting should be readable...
+set background=dark
+colorscheme desert
+
+
+" case-insensitive matching
+set ic
+
+" abbreviations (also insensitive)
+iab tt I18n.t("
+iab pd puts "pinto_debug =>
+iab cl console.log("pinto_debug =>
+ab BC background-color:
+ab BCB border: 1px solid black;
+ab BCR border: 1px solid red;
+ab BI background:url(
+ab hhd <div id="" class=""><CR></div><Esc>no<tab>
+ab rrs <%%><Esc>hi
+ab rrp <%=%><Esc>hi
+ab rtt <%= I18n.t("") %><Esc>hhhhi
+iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac cursus libero. Cras ut nisi et orci vulputate mollis ullamcorper sit amet erat. Mauris ultricies iaculis elit, non gravida sem ultricies nec. Curabitur id ante dignissim dui placerat rhoncus. Sed nunc felis, fringilla in euismod ut, viverra non tellus. Sed venenatis purus vitae felis feugiat viverra. Proin arcu lacus, vehicula vel consequat at, hendrerit ut sem. Aliquam a fringilla velit. Donec ac sapien urna. Maecenas fringilla cursus tortor sed sodales. Ut arcu leo, dapibus consectetur laoreet eget, faucibus et nunc. Sed eleifend pulvinar odio quis gravida. Pellentesque faucibus tincidunt venenatis. Maecenas ac fermentum lacus. 
+iab rdb puts "#{'*' * 100} ruby_debug"<CR>puts "*" * 100<Esc>Oputs
+iab cssc /***************************<CR>***************************/<Esc>O
+iab hh1 <h1></h1><Esc>hhhhi
+iab hh2 <h2></h2><Esc>hhhhi
+iab hh3 <h3></h3><Esc>hhhhi
+iab hh4 <h4></h4><Esc>hhhhi
+iab hh5 <h5></h5><Esc>hhhhi
+iab hh6 <h6></h6><Esc>hhhhi
+iab hhh <html></html><Esc>hhhhhhi
+iab hhb <body></body><Esc>hhhhhhi
+iab hhead <head></head><Esc>hhhhhhi
+iab hhj <script></script><Esc>hhhhhhhhi
+iab hhs <style></style><Esc>hhhhhhhi
+iab hhtable <table></table><Esc>hhhhhhhi
+iab hhthead <thead></thead><Esc>hhhhhhhi
+iab hhtr <tr></tr><Esc>hhhhi
+iab hhtd <td></td><Esc>hhhhi
+iab hhth <th></th><Esc>hhhhi
+iab hhbut <button></button><Esc>hhhhhhhhi
+iab hhbutton <button></button><Esc>hhhhhhhhi
+iab hhbr <br/>
+iab jf function someFunc() {}<Esc>ha
+
+
+"line numbering
+se nu
+
+
+" Backslash mappings
+map <leader>t :FuzzyFinderTextMate
+map <leader>d :FuzzyFinderDir<CR>
+map <leader>f :FuzzyFinderFile<CR>
+map <leader>a :FuzzyFinderAddBookmark<CR>
+map <leader>b :FuzzyFinderBookmark<CR>
+" YAML highlighting
+map <leader>y :setf yaml<CR>
+" Copy!
+map <leader>c :!pbcopy<CR>u
+" Show registers
+map <leader>r :reg<CR>
+" For surround.vim
+map <leader>" viws"
+map <leader>' viws'
+map <leader>> viws>
+"Code Folding
+map <leader>- f{v%zf
+map <leader>= zo
+"Tab navigation
+map <leader>1 :tabr<CR>
+map <leader>2 2gt
+map <leader>3 3gt
+map <leader>4 4gt
+map <leader>5 5gt
+map <leader>6 6gt
+map <leader>7 7gt
+map <leader>8 8gt
+map <leader>9 :tabl<CR>
+map <leader>0 :tabl<CR>
+map <leader>w :tabm 1<CR>:tabdo w<CR>2gt
+map <leader>e :tabm 1<CR>:tabdo e!<CR>2gt
+
+" Zen HTML
+" map <c-l> <c-y>,
+
+" More usefull than null, ctrl+space => &nbsp;
+imap <Nul> &nbsp; 
+
+"Always show tab line
+set showtabline=2
+
+"Highlight colors
+highlight PmenuSel ctermbg=Blue ctermfg=Grey
+highlight Pmenu ctermbg=Grey ctermfg=Black
+highlight MatchParen ctermbg=Grey ctermfg=Black
+highlight TabLineSel ctermbg=Blue ctermfg=Grey
+highlight TabLineFill ctermbg=Black ctermfg=Black
+highlight FoldColumn ctermbg=Blue ctermfg=Grey
+highlight Folded ctermbg=Black ctermfg=Cyan
+highlight ExtraWhitespace ctermbg=Red ctermfg=Black
+match ExtraWhitespace /\s\+$/
+
+" 1 goes to front of line, 0 goes to end
+map 0 ^
+map - $
+
+" Set p to use indentation
+map p ]p
+map P [p
+
+" For closetag.vim
+let b:unaryTagsStack=""
+
+"LAST - load file-type .vims
+autocmd FileType ruby source ~/.vim/ruby.vim
+
+"noremap t j
+"noremap n k
+"noremap s l
+"noremap j n
+"noremap N J
+"noremap J N
+map cg cw
+
+map R gT
+map L gt
+
+"set iskeyword-=_
+
+" Zen Coding
+imap <c-l> <ESC>:call <SNR>16_zen_expandAbbr(0)<CR>a<CR><ESC>O<TAB>
+let g:user_zen_settings = {
+\  'ruby' : {
+\    'extends' : 'html',
+\  },
+\  'eruby' : {
+\    'extends' : 'html',
+\  },
+\}

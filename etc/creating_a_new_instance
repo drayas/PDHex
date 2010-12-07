@@ -1,0 +1,26 @@
+Use basic Amazon Linux EC2 64bit
+
+# Connecting to the instance
+You'll need to connect like so: ssh -i etc/pdhex.pem ec2_dns_here
+
+# Install Git
+sudo yum install git-core
+
+# Install rubygems (it comes with ruby 1.8.7)
+sudo yum install rubygems
+
+# Install rails
+sudo gem install rails -v=2.3.5 --no-rdoc --no-ri
+
+# Install heroku gem
+sudo gem install heroku
+
+# Create a keypair
+ssh-keygen (accept all defaults) 
+
+# Add the keys you just made
+heroku keys:add
+
+# Get the code
+git clone  git@heroku.com:pdhex.git
+

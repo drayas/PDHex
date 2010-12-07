@@ -1,0 +1,11 @@
+<h1>Welcome to Hex!</h1>
+
+<% if @current_user %>
+  Here's some stuff you can do:
+  <ul>
+    <li><%= link_to 'Check out our cards', cards_path %></li>
+    <li><%= link_to 'Check out our decks', decks_path %></li>
+  </ul>
+<% else %>
+  You'll need to <%= link_to 'log in', login_users_path %> to continue.
+<% end %>
