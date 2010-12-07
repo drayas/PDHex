@@ -1,0 +1,15 @@
+<% content_for :nav do %>
+  <%= link_to 'Start a new game', new_game_path  %>
+<% end %>
+<% if @games.empty? %>
+  You ain't got no games
+<% else %>
+  <ul>
+    <% for game in @games do %>
+      <li>
+        <%= link_to game.name, game_path(game) %> 
+        (created <%= distance_of_time_in_words_to_now(game.created_at) %> ago)
+      </li>
+    <% end %>
+  </ul>
+<% end %>

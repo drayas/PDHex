@@ -1,0 +1,15 @@
+<% content_for :nav do %>
+  Viewing game <%= @game.name %>
+  <%= link_to "All games", games_path %>
+<% end %>
+<div id="game">
+  <div id="user_one" class="user">
+    User one
+    <%= render :partial => 'user', :locals => {:user => @current_user} %>
+  </div>
+  <div id="user_two" class="user">
+    <%= @current_user.name %>
+    <%= render :partial => 'user', :locals => {:user => @current_user} %>
+  </div>
+</div>
+

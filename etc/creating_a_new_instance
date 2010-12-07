@@ -24,3 +24,17 @@ heroku keys:add
 # Get the code
 git clone  git@heroku.com:pdhex.git
 
+# Installing sqlite
+  # installing gcc
+  sudo yum install gcc
+
+  # Upgrading ruby
+    # Downloading ruby
+    wget ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p0.tar.gz
+    tar -xvf ruby-1.9.2-p0.tar.gz
+    cd ruby-1.9.2-p0.tar.gz
+    
+    # Build
+    ./configure
+    make
+    make install

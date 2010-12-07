@@ -1,0 +1,39 @@
+Creating decks
+  User
+    **Games
+    Decks
+    Cards?
+  Deck 
+    Cards
+
+Playing a game
+  Game
+    **1 or more users
+  Player
+    user_id
+  GameCounter
+    game_user_id
+    name
+    count
+  GameContainer
+    List of game_card_ids (ordered)
+    name (or is that just based on type?)
+    type (deck, graveyard, etc)
+    game_user_id
+  GameCard => like a card, but just for this game
+    card_id
+    game_user_id
+    visibility (none, user, world)
+
+GameContainerTypes
+  Deck => all your cards
+    visibility: none
+    Graveyard
+      visibility: world
+    Removed From Game
+      visibility: world
+    In play
+      visibility: world
+    Hand
+      visibility: user
+

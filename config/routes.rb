@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cards
   map.resources :decks
+  map.resources :games
   map.resources :users, :collection => {
     :login        => :get,
     :logout       => :get,

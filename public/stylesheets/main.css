@@ -3,6 +3,25 @@ body {
   font-size: 10px;
 }
 
+/***************************
+ * MAIN LAYOUT 
+ * ***************************/
+#user_options {
+  width: 50%;
+  height: 22px;
+  text-align: right;
+  float: left;
+}
+#navigation {
+  width: 50%;
+  height: 22px;
+  text-align: left;
+  float: left;
+}
+/***************************
+ *  END MAIN LAYOUT
+ * ***************************/
+
 /****************************
 CARD
 *****************************/
@@ -199,8 +218,80 @@ tr:hover {
 /***************************
  END DECK BUILDER
 ***************************/
-#user_options {
-	width: 100%;
-	height: 22px;
-	text-align: right;
+/***************************
+ *  GAME LAYOUT
+ * ***************************/
+#game {
+  position: absolute;
+  top: 30px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  border: 1px solid black;
+  background:url(/images/games/game_background.jpg) repeat;
+  background-size: 100%;
 }
+#game .user {
+  padding: 5px;
+}
+#game #user_one {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 50%;
+  border-bottom: 1px dashed black;
+}
+#game #user_two {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  border-bottom: 1px dashed black;
+}
+#graveyard {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  height: 83px;
+  width: 60px;
+  border: 1px solid black;
+  background:url(/images/cards/card_back.jpg) no-repeat;
+  background-size: 100%;
+  color: white;
+}
+#deck {
+  position: absolute;
+  top: 30px;
+  left: 75px;
+  height: 83px;
+  width: 60px;
+  border: 1px solid black;
+  background:url(/images/cards/card_back.jpg) no-repeat;
+  background-size: 100%;
+  color: white;
+}
+#hand {
+  position: absolute;
+  top: 90px;
+  left: 175px;
+  height: 183px;
+  width: 260px;
+  border: 1px solid black;
+  background-size: 100%;
+  color: white;
+}
+#in_play {
+  position: absolute;
+  top: 90px;
+  left: 575px;
+  height: 183px;
+  width: 260px;
+  border: 1px solid black;
+  background-size: 100%;
+  color: white;
+}
+ /***************************
+  *  END GAME LAYOUT
+  * ***************************/
