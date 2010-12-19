@@ -1,2 +1,17 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
+<%= f.label :cost %>
+<%= f.text_field :cost %>
+<%= f.label :card_type %>
+<%= f.select :card_type, Card::CARD_TYPES.map{|card_type| [card_type.titleize, card_type]} %>
+<%= f.label :card_sub_type %>
+<%= f.text_field :card_sub_type %>
+<%= f.label :text %>
+<%= f.text_field :text %>
+<%= f.label :flavor %>
+<%= f.text_field :flavor %>
+<%= f.label :toughness, "Power/Toughness" %>
+<%= f.text_field :power, :size => 2 %>/<%= f.text_field :toughness, :size => 2 %>
+<%= f.label :color %>
+<%= f.select :color, Card::COLORS.map{|color| [color.titleize, color]} %>
+
