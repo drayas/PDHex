@@ -11,6 +11,13 @@ module ApplicationHelper
   def image_tag(str)
     '<img class="casting_cost_image" src="' + str + '"/>'
   end
+
+  def render_colorless(str)
+    '<span class="colorless_mana"><span class="circle">' + str.ljust(2).rjust(3).gsub(' ','&nbsp;') + '</span></span>'
+  end
+  def tap_symbol
+    '<span class="tap_symbol"><span class="circle">&nbsp;T&nbsp;</span></span>'
+  end
   def render_cost(text)
     return "" if text.nil?
     # Pull out strings denoted by '-' chars: -R-, -RRU-, -BB2-, -T-, etc.
@@ -22,7 +29,11 @@ module ApplicationHelper
 
       # Loop through our tokens
       rendered_string = ""
-      original_string.each_char {|tok|
+      if original_string.to_i > 0
+        rendered_string += render_colorless(original_string.to_i.to_s)
+      end
+      original_string.gsub(/\d/, '').each_char {|tok|
+        # Alpha
         case tok.upcase
           when 'R'
             rendered_string += image_tag('/images/cards/casting_cost_red.png')
@@ -35,7 +46,7 @@ module ApplicationHelper
           when 'W'
             rendered_string += image_tag('/images/cards/casting_cost_white.png')
           when 'T'
-            rendered_string += "Tap"
+            rendered_string += tap_symbol
           when '0'
             rendered_string += ""
           else

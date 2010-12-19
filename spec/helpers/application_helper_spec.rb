@@ -6,7 +6,7 @@ describe ApplicationHelper do
   
   describe 'Rendering costs' do
     before(:each) do
-      @supported_tokens = %w(R r B U G W T)
+      @supported_tokens = %w(R r B U G W T 1 12)
     end
     it 'should not fail with nil' do
       ApplicationHelper::render_cost(nil)
@@ -25,7 +25,9 @@ describe ApplicationHelper do
       one = "-R-"
       two = "-RR-"
       ApplicationHelper.render_cost(one).should_not == ApplicationHelper.render_cost(two)
-
+    end
+    it 'should handle multi-digit numbers' do
+      ApplicationHelper.render_cost('-100-').should include('100')
     end
   end
 

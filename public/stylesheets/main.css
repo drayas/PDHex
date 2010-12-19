@@ -70,13 +70,31 @@ CARD
 }
 .cost {
   position: absolute;
-  top: 0px;
+  top: -1px;
   right: 0px;
   overflow: hidden;
 }
-.casting_cost_image {
-  height: 10px;
-  width: 10px;
+.colorless_mana {
+  background:url(/images/cards/casting_cost_colorless.png) no-repeat center !important;
+}
+.tap_symbol {
+  background:url(/images/cards/casting_cost_colorless.png) no-repeat center !important;
+  font-style: italic;
+}
+.circle {
+  font-size: 8px;
+  line-height:12px;
+  vertical-align: top;
+  padding: 2px;
+}
+.colorless_mana, .tap_symbol {
+  vertical-align: top;
+  line-height: 12px;
+}
+.casting_cost_image, .colorless_mana, .tap_symbol {
+  height: 12px;
+  width: 12px;
+  margin: 0px 1px;
 }
 .image {
 	position: absolute;
