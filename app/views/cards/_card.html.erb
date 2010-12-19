@@ -1,8 +1,8 @@
 <div class="card_container">
   <div class="card <%= card.color %>">
     <div class="title field">
-      <div class="name"><%= card.name %></div>
-      <div class="cost"><%= card.cost %></div>
+      <div class="name"><%= card.name.titlecase %></div>
+      <div class="cost"><%= render_cost("-#{card.cost}-") %></div>
     </div>
     <div class="type field">
      <%= card.card_type.titlecase %> 
@@ -10,7 +10,7 @@
      </div>
      <div class="image"></div>
     <div class="text field" style="font-size: <%= card.font_size %>px;">
-      <%= card.text %>
+      <%= render_cost(card.text) %>
       <% if card.flavor %>
         <div class="flavor"><%= card.flavor %></div>
       <% end %>

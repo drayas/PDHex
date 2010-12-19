@@ -35,5 +35,8 @@ class Card < ActiveRecord::Base
     return 9 if (self.text || "").split(' ').size <= 40
     return 7
   end
+  def self.image_tag(str)
+    str 
+  end
 
 end
