@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   validate :card_type_must_be_valid
 
   COLORS = %w(red white blue green black artifact colorless gold)
-  CARD_TYPES = %w(creature land instant sorcercy enchantment artifact)
+  CARD_TYPES = %w(creature land instant sorcery enchantment artifact)
 
   def pretty_stats
     return "" if self.power.blank? && self.toughness.blank?

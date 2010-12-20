@@ -100,4 +100,56 @@ describe DecksController do
     end
   end
 
+  describe 'adding a card to a deck' do
+    before(:each) do
+      @deck = mock_model Deck
+      @card = mock_model Card
+      Deck.stub!(:find_by_id).and_return(@deck)
+      Card.stub!(:find_by_id).and_return(@card)
+    end
+    it 'should add the card to the deck' do
+      @deck.should_receive(:add_card)
+      post :add_card, :id => @deck, :card_id => @card
+      response.should redirect_to deck_path(@deck)
+    end
+    it 'should handle a missing deck gracefully' do
+      Deck.stub!(:find_by_id).and_return(nil)
+      post :add_card, :id => @deck, :card_id => @card
+      flash[:error].should_not be_nil 
+      response.should redirect_to decks_path
+    end
+    it 'should handle a missing card gracefully' do
+      Card.stub!(:find_by_id).and_return(nil)
+      post :add_card, :id => @deck, :card_id => @card
+      flash[:error].should_not be_nil 
+      response.should redirect_to deck_path(@deck)
+    end
+  end
+
+  describe 'removing a card from a deck' do
+    before(:each) do
+      @deck = mock_model Deck
+      @card = mock_model Card
+      Deck.stub!(:find_by_id).and_return(@deck)
+      Card.stub!(:find_by_id).and_return(@card)
+    end
+    it 'should remove the card from the deck' do
+      @deck.should_receive(:remove_card)
+      post :remove_card, :id => @deck, :card_id => @card
+      response.should redirect_to deck_path(@deck)
+    end
+    it 'should handle a missing deck gracefully' do
+      Deck.stub!(:find_by_id).and_return(nil)
+      post :remove_card, :id => @deck, :card_id => @card
+      flash[:error].should_not be_nil 
+      response.should redirect_to decks_path
+    end
+    it 'should handle a missing card gracefully' do
+      Card.stub!(:find_by_id).and_return(nil)
+      post :remove_card, :id => @deck, :card_id => @card
+      flash[:error].should_not be_nil 
+      response.should redirect_to deck_path(@deck)
+    end
+  end
+
 end

@@ -7,8 +7,10 @@
 		<td>Stats</td>
 	</thead>
 	<% for card in cards do %>
-		<tr onmouseover="showCard(<%= card.id %>)" class="<%= cycle("even", "odd") %>">
-			<td><%= card.name %></td>
+		<tr class="<%= cycle("even", "odd") %>">
+      <td>
+        <%= render :partial => 'cards/card', :locals => {:card => card} %>
+      </td>
 			<td><%= card.cost %></td>
 			<td><%= card.type %></td>
 			<td><%= card.text %></td>
@@ -18,6 +20,12 @@
 					<%= render :partial => 'cards/card', :locals => {:card => card} %>
 				</div>
 			</td>
+      <% if show_add_to_deck_link %>
+        <td><%= link_to "Add card", add_card_deck_path(deck, :card_id => card.id), :method => 'post' %></td>
+      <% end %>
+      <% if show_remove_from_deck_link %>
+        <td><%= link_to "Remove card", remove_card_deck_path(deck, :card_id => card.id), :method => 'post' %></td>
+      <% end %>
 		</tr>
 	<% end %>
 </table>

@@ -1,14 +1,28 @@
 <h1>Editing Deck <%= @deck.name %></h1>
-<div id="preview">
-  <% unless @cards.empty? %>
-    <%= render :partial => 'cards/card', :locals => {:card => @cards.first} %>
-  <% end %>
-</div>
 <div id="in_use">
-  <h2>Cards in this deck</h2>
-  <%= render :partial => 'cards/card_table', :locals => {:cards => @cards_in_deck} %>
+  <h2>Cards in this deck (<%= @deck.cards.count %>)</h2>
+  <table>
+    <% for card_type in Card::CARD_TYPES do %>
+      <tr>
+        <td><%= card_type.titlecase %></td>
+        <td><%= @deck.card_search(:card_type => card_type).size %></td>
+      </tr>
+    <% end %>
+
+  </table>
+  <%= render :partial => 'cards/card_table', :locals => {
+    :cards => @cards_in_deck, 
+    :deck => @deck, 
+    :show_add_to_deck_link => false,
+    :show_remove_from_deck_link => true
+  } %>
 </div>
 <div id="available">
   <h2>Cards available</h2>
-  <%= render :partial => 'cards/card_table', :locals => {:cards => @cards} %>
+  <%= render :partial => 'cards/card_table', :locals => {
+    :cards => @cards, 
+    :deck => @deck, 
+    :show_add_to_deck_link => true,
+    :show_remove_from_deck_link => false
+  } %>
 </div>

@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :cards
-  map.resources :decks
+  map.resources :decks, :collection => {
+  }, :member => {
+    :add_card      => :post,
+    :remove_card   => :post
+  }
   map.resources :games
   map.resources :users, :collection => {
     :login        => :get,

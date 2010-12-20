@@ -1,4 +1,4 @@
 <%= link_to "Create a new card", new_card_path %><br/>
 <% for card in @cards do %>
-  <%= render :partial => 'card', :locals => {:card => card} %>
+  <%= render :partial => 'card', :locals => {:card => card} %><br/>
 <% end %>

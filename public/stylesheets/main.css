@@ -25,6 +25,13 @@ body {
 /****************************
 CARD
 *****************************/
+.card_link {
+  text-decoration: underline;
+  font-style: italic;
+  color: black;
+  font-weight: normal;
+  line-height: 16px;
+}
 .card_container {
 	border: 5px solid gray;
 	position: relative;
@@ -221,10 +228,6 @@ form input {
 }
 .card_table tr.even {
   background-color: lightgray;
-}
-tr:hover {
-  background-color: black !important;
-  color: white !important;
 }
 #in_use {
 	width: 40%;

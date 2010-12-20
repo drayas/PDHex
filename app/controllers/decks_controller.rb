@@ -44,4 +44,38 @@ class DecksController < ApplicationController
     @deck.destroy
     redirect_to decks_path
   end
+
+  def add_card
+    @deck = Deck.find_by_id(params[:id])
+    @card = Card.find_by_id(params[:card_id])
+    if @deck.nil? || @card.nil?
+      flash[:error] = "Could not find the card with id #{params[:card_id].inspect}" if @card.nil?
+      flash[:error] = "Could not find the deck with id #{params[:deck_id].inspect}" if @deck.nil?
+    else
+      @deck.add_card(@card)
+    end
+
+    if @deck
+      redirect_to deck_path(@deck)
+    else
+      redirect_to decks_path
+    end
+  end
+
+  def remove_card
+    @deck = Deck.find_by_id(params[:id])
+    @card = Card.find_by_id(params[:card_id])
+    if @deck.nil? || @card.nil?
+      flash[:error] = "Could not find the card with id #{params[:card_id].inspect}" if @card.nil?
+      flash[:error] = "Could not find the deck with id #{params[:deck_id].inspect}" if @deck.nil?
+    else
+      @deck.remove_card(@card)
+    end
+
+    if @deck
+      redirect_to deck_path(@deck)
+    else
+      redirect_to decks_path
+    end
+  end
 end

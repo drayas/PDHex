@@ -1,3 +1,9 @@
+<p>
+	For casting costs, use BGRUW (U is blue), and a number for colorless.  In card text, use '-' characters to delimit costs with the same characters and 'T' as "tap," like so: 
+</p>
+<p>
+	-RRT-: Do 5 damage to target player
+</p>
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= f.label :cost %>
@@ -7,9 +13,9 @@
 <%= f.label :card_sub_type %>
 <%= f.text_field :card_sub_type %>
 <%= f.label :text %>
-<%= f.text_field :text %>
+<%= f.text_area :text %>
 <%= f.label :flavor %>
-<%= f.text_field :flavor %>
+<%= f.text_area :flavor %>
 <%= f.label :toughness, "Power/Toughness" %>
 <%= f.text_field :power, :size => 2 %>/<%= f.text_field :toughness, :size => 2 %>
 <%= f.label :color %>

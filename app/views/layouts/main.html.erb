@@ -17,5 +17,15 @@
     <% end %>
     <%= show_flash %>
     <%= yield %>
+    <script type="text/javascript">
+      $('.card_link').mouseover(function(event) {
+        var $target = $(event.target);
+        show_card_info($target.attr('card_id'), event.pageX, event.pageY);
+      });
+      $('.card_link').mouseout(function(event) {
+        var $target = $(event.target);
+        hide_card_info($target.attr('card_id'));
+      });
+    </script>
   </body>
 </html>
