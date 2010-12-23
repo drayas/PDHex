@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
   validate :color_must_be_valid
   validate :card_type_must_be_valid
 
-  COLORS = %w(red white blue green black artifact colorless gold)
+  COLORS = %w(red white blue green black colorless gold)
   CARD_TYPES = %w(creature land instant sorcery enchantment artifact)
 
   def pretty_stats
@@ -37,6 +37,29 @@ class Card < ActiveRecord::Base
   end
   def self.image_tag(str)
     str 
+  end
+
+  def self.search(options = {})
+    options ||= {}
+    select = "select c.*"
+    from   = "from cards c"
+    where  = "where 1=1"
+    params = []
+
+    # card_type
+    unless options[:card_type].blank?
+      where += " and card_type = ?"
+      params << options[:card_type].downcase
+    end
+
+    # color
+    unless options[:color].blank?
+      where += " and color = ?"
+      params << options[:color].downcase
+    end
+
+    sql = ["#{select} #{from} #{where}"] + params
+    Card.find_by_sql(sql)
   end
 
 end

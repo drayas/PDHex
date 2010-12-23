@@ -19,6 +19,13 @@
 </div>
 <div id="available">
   <h2>Cards available</h2>
+  <% form_for "search", :html => {:id => "card_filter", :onchange => "this.submit();",:method => "get"} do |f| %>
+    <%= label_tag "search[color]", "Color" %>
+    <%= select("search", "color", Card::COLORS.sort.map(&:titlecase), {:include_blank => "All", :selected => (@search_params[:color] || "")}) %>
+    <%= label_tag "search[card_type]", "Type" %>
+    <%= select("search", "card_type", Card::CARD_TYPES.sort.map(&:titlecase), {:include_blank => "All", :selected => (@search_params[:card_type] || "")}) %>
+  <% end %>
+
   <%= render :partial => 'cards/card_table', :locals => {
     :cards => @cards, 
     :deck => @deck, 

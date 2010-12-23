@@ -184,10 +184,10 @@ CARD COLORS
 .red .field {
 	background-color: #DEBDAC;
 }
-.artifact {
+.colorless {
 	background:url(/images/cards/artifact_background.jpg) repeat !important;
 }
-.artifact .field {
+.colorless .field {
 	background-color: #D2D6DB;
 }
 .gold {
@@ -219,6 +219,9 @@ form input {
 /***************************
  DECK BUILDER
 ***************************/
+#card_filter label {
+  display: inline;
+}
 .card_table {
   border: 1px inset black;
   padding; 3px;

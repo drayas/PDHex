@@ -68,4 +68,15 @@ describe Card do
       @card.font_size.should == 7
     end
   end
+
+  describe 'Searching for cards' do
+    it 'should run some kind of find_by_sql against the DB' do
+      Card.should_receive(:find_by_sql)
+      Card.search
+    end
+    it 'should not gripe if you call it with nil' do
+      Card.search(nil)
+    end
+  end # searching for cards
+
 end # main

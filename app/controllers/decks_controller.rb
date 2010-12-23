@@ -4,11 +4,12 @@ class DecksController < ApplicationController
     @decks = Deck.all
   end
 
+  # DECK BUILDER
   def show
     @deck = Deck.find(params[:id])
-    @cards = Card.all
+    @cards = Card.search(params[:search])
     @cards_in_deck = @deck.cards
-  
+    @search_params = params[:search] || {}
   end
 
   def new

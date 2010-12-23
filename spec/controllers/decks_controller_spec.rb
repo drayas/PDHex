@@ -87,16 +87,25 @@ describe DecksController do
     end
   end
 
+  # Show is the deck builder
   describe 'show' do
     before(:each) do
       @deck = Deck.new
       Deck.stub!(:find).and_return(@deck)
+      Card.stub!(:search).and_return([])
     end
     it "Should give a list of cards in the deck and a list of cards available" do
       get :show, :id => @deck.id
       assigns(:deck).should_not be_nil 
       assigns(:cards).should_not be_nil
       assigns(:cards_in_deck).should_not be_nil
+      assigns(:search_params).should_not be_nil
+    end
+    it "Should use Card.search to filter our cards" do
+      search_params = HashWithIndifferentAccess.new({:card_type => "land", :color => "blue"})
+      Card.should_receive(:search).with(search_params).and_return('foo')
+      get :show, :id => @deck.id, :search => search_params
+      assigns(:cards).should == 'foo'
     end
   end
 
