@@ -4,8 +4,8 @@ class Game < ActiveRecord::Base
 
   # Players is an array of hashes with user_ids and deck_ids
   #[
-  #  {:user => 1, :deck => 123},
-  #  {:user => 2, :deck => 234}
+  #  {:user => u, :deck => d},
+  #  {:user => u2, :deck => d1}
   #]
   def self.start!(players)
     # Guard clauses
