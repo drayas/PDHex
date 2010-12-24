@@ -9,7 +9,7 @@ class AddTestCards < ActiveRecord::Migration
       "artifact" => "1",
       "gold"     => "URBWG",
     }
-    ["blue", "red", "black", "white", "green", "blue", "artifact", "gold"].each do |color|
+    ["blue", "red", "black", "white", "green", "blue", "colorless", "gold"].each do |color|
       Card.create!(
         :name          => "Basic #{color} creature",
         :card_type     => "creature",
