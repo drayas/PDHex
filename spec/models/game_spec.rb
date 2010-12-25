@@ -40,7 +40,8 @@ describe Game do
     
     it 'should create a game' do
       Game.should_receive(:create!)
-      Game.start!(@valid_params)  
+      game = Game.start!(@valid_params)  
+      game.should be_an_instance_of Game
     end
 
     it 'should create game users and add them to the game' do

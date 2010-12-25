@@ -33,5 +33,6 @@ class Game < ActiveRecord::Base
     }
     game.update_attribute(:name, "Game between #{user_names.join(" and ")}")
 
+    game
   end
 end
