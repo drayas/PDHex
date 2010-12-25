@@ -262,7 +262,7 @@ form input {
 #game .user {
   padding: 5px;
 }
-#game #user_one {
+#game #user_0 {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -270,7 +270,7 @@ form input {
   bottom: 50%;
   border-bottom: 1px dashed black;
 }
-#game #user_two {
+#game #user_1 {
   position: absolute;
   top: 50%;
   right: 0px;
@@ -302,20 +302,21 @@ form input {
 }
 #hand {
   position: absolute;
-  top: 90px;
-  left: 175px;
-  height: 183px;
-  width: 260px;
+  top: 120px;
+  left: 10px;
+  bottom: 10px;
+  width: 150px;
   border: 1px solid black;
   background-size: 100%;
-  color: white;
+  overflow: auto;
+  padding: 3px;
 }
 #in_play {
   position: absolute;
-  top: 90px;
-  left: 575px;
-  height: 183px;
-  width: 260px;
+  top: 30px;
+  left: 175px;
+  bottom: 10px;
+  right: 10px;
   border: 1px solid black;
   background-size: 100%;
   color: white;

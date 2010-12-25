@@ -71,6 +71,8 @@ describe GameDeck do
       @game_deck.stub(:hand).and_return(@hand)
     end
     it 'should move the top 7 cards from the library into the hand' do
+      @library.should_receive(:update_attribute)
+      @hand.should_receive(:update_attribute)
       @game_deck.draw_cards(7) 
       @library.game_card_ids.should == [1,2]
       @hand.game_card_ids.should == [9,8,7,6,5,4,3]

@@ -33,12 +33,13 @@ class GameDeck < ActiveRecord::Base
   end
 
   def draw_cards(num)
-    gc_library = self.library
-    gc_hand = self.hand
+    lib_ids = self.library.game_card_ids
+    hand_ids = self.hand.game_card_ids
     num.times do
-      gc_hand.game_card_ids.push(gc_library.game_card_ids.pop)
+      hand_ids.push(lib_ids.pop)
     end
-
+    self.library.update_attribute(:game_card_ids, lib_ids)
+    self.hand.update_attribute(:game_card_ids, hand_ids)
   end
 
   def hand
