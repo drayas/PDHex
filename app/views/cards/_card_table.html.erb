@@ -12,7 +12,7 @@
         <%= render :partial => 'cards/card', :locals => {:card => card} %>
       </td>
 			<td><%= card.cost %></td>
-			<td><%= card.type %></td>
+			<td><%= card.card_type.titlecase %></td>
 			<td><%= card.text %></td>
 			<td>
 				<%= card.pretty_stats %>
