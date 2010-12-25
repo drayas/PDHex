@@ -40,6 +40,17 @@ CARD
 	float: left;
 	margin: 5px;
 }
+.card_action_container {
+  border: 5px solid gray;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  position: relative;
+  min-height: 50px;
+  width: 200px;
+  float: left;
+  margin: 5px;
+}
 
 .card {
 	position: absolute;
@@ -316,7 +327,17 @@ form input {
   top: 30px;
   left: 175px;
   bottom: 10px;
+  right: 175px;
+  border: 1px solid black;
+  background-size: 100%;
+  color: white;
+}
+#stack {
+  position: absolute;
+  top: 30px;
+  bottom: 10px;
   right: 10px;
+  width: 150px;
   border: 1px solid black;
   background-size: 100%;
   color: white;

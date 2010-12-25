@@ -8,6 +8,10 @@ class GameContainer < ActiveRecord::Base
   end
 
   def cards
-    self.game_card_ids.map{|gcid| GameCard.find(gcid).card}
+    self.game_cards.map(&:card)
+  end
+
+  def game_cards
+    self.game_card_ids.map{|gcid| GameCard.find(gcid)}
   end
 end

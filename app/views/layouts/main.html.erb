@@ -26,6 +26,9 @@
         var $target = $(event.target);
         hide_card_info($target.attr('card_id'));
       });
+      $('body').click(function(event) {
+        $('.card_action_container').hide();
+      });
     </script>
   </body>
 </html>

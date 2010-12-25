@@ -2,7 +2,13 @@
 <div id="graveyard">graveyard</div>
 <div id="in_play">in_play</div>
 <div id="hand">
-  <% game_user.game_deck.hand.cards.each do |card| %>
-    <%= render :partial => 'cards/card', :locals => {:card => card} %><br/>
+  <% hand = game_user.game_deck.hand %>
+  <% hand.game_cards.each do |game_card| %>
+    <%= render :partial => 'cards/card', :locals => {
+      :card      => game_card.card, 
+      :container => hand, 
+      :game_card => game_card 
+    } %><br/>
   <% end %>
 </div>
+<div id="stack">stack</div>

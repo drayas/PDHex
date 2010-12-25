@@ -11,3 +11,11 @@
   <% end %>
 </div>
 
+<script type="text/javascript">
+  $('.card_link').click(function(event) {
+    event.stopImmediatePropagation();
+    var $target = $(event.target);
+    show_card_actions($target.attr('card_id'), event.pageX, event.pageY);
+    return false;
+  });
+</script>
