@@ -39,4 +39,19 @@ class GameCard < ActiveRecord::Base
   def format_actions(actions)
     actions.map{|code| {:code => code, :display => ACTIONS[code][:display], :param_required => ACTIONS[code][:param_required]}}
   end
+  def handle_action(options = {})
+    container = options[:container]
+    code = options[:code]
+    case code
+      when 'graveyard'
+        game_card_ids = container.game_card_ids
+        game_card_ids.delete_at(game_card_ids.find_index(self.id))
+        container.update_attribute(:game_card_ids, game_card_ids)
+        graveyard = self.game_deck.graveyard
+        graveyard.update_attribute(:game_card_ids, graveyard.game_card_ids.push(self.id))
+      else
+        return [false, "You specified an undefined action code: #{code.inspect}"]
+    end
+    return [true, ""]
+  end
 end

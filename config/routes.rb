@@ -6,6 +6,9 @@ ActionController::Routing::Routes.draw do |map|
     :remove_card   => :post
   }
   map.resources :games
+  map.resources :game_cards, :member => {
+    :handle_action => :post
+  }
   map.resources :users, :collection => {
     :login        => :get,
     :logout       => :get,
