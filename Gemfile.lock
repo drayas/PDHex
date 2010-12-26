@@ -1,0 +1,39 @@
+GEM
+  remote: http://gems.github.com/
+  remote: http://gems.rubyforge.org/
+  specs:
+    actionmailer (2.3.4)
+      actionpack (= 2.3.4)
+    actionpack (2.3.4)
+      activesupport (= 2.3.4)
+      rack (~> 1.0.0)
+    activerecord (2.3.4)
+      activesupport (= 2.3.4)
+    activeresource (2.3.4)
+      activesupport (= 2.3.4)
+    activesupport (2.3.4)
+    fastercsv (1.5.0)
+    json (1.4.6)
+    rack (1.0.1)
+    rails (2.3.4)
+      actionmailer (= 2.3.4)
+      actionpack (= 2.3.4)
+      activerecord (= 2.3.4)
+      activeresource (= 2.3.4)
+      activesupport (= 2.3.4)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rspec (1.2.9)
+    rspec-rails (1.2.9)
+      rack (>= 1.0.0)
+      rspec (>= 1.2.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fastercsv (= 1.5.0)
+  json
+  rails (= 2.3.4)
+  rspec (= 1.2.9)
+  rspec-rails (= 1.2.9)
