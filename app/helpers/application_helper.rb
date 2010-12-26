@@ -20,9 +20,10 @@ module ApplicationHelper
   end
   def render_cost(text)
     return "" if text.nil?
+
     # Pull out strings denoted by '-' chars: -R-, -RRU-, -BB2-, -T-, etc.
-    cost_strings = text.scan(/-\w+-/)
-    result = text.clone
+    cost_strings = text.gsub("{", "-").gsub("}", "-").scan(/-\w+-/)
+    result = text.clone.gsub("{", "-").gsub("}", "-")
     for original_string in cost_strings
       # Get rid of our delimeters
       original_string.delete!('-') 
