@@ -2,7 +2,6 @@ vendor/bundler-gems
 log/
 .DS_Store
 .bundle
-Gemfile.lock
 db/*.db
 db/schema.rb
 db/*.sqlite3
