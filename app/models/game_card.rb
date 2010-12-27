@@ -1,6 +1,7 @@
 class GameCard < ActiveRecord::Base
   belongs_to :game_deck
   belongs_to :card
+  validate :visibility_must_be_valid
 
   # Parameter requirements:
   # :none, :number, :target, :number_and_target, :name_and_target
@@ -17,6 +18,9 @@ class GameCard < ActiveRecord::Base
     :deck_fetch           => {:param_required => :name_and_target,    :display => "Fetch a card from your deck"},
     :graveyard_fetch      => {:param_required => :name_and_target,    :display => "Fetch a card from your graveyard"}
   }
+
+  VISIBILITY_TYPES = %w(player all)
+
   # return an array of hashes with an action code and display name:
   # [
   #   {:code => 'to_graveyard', :name => 'Send to graveyard'},
@@ -53,5 +57,19 @@ class GameCard < ActiveRecord::Base
         return [false, "You specified an undefined action code: #{code.inspect}"]
     end
     return [true, ""]
+  end
+
+  def visible?(user)
+    return true if self.visibility == "all"
+    return true if self.game_deck.game_user.user == user
+    return false
+  end
+
+  def visibility_must_be_valid
+    if self.visibility.nil? || !VISIBILITY_TYPES.include?(self.visibility.downcase)
+      self.errors.add_to_base("Invalid visibility type")
+      return false
+    end
+    return true
   end
 end
