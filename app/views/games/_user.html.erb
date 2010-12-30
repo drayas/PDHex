@@ -4,11 +4,15 @@
 <div id="hand">
   <% hand = game_user.game_deck.hand %>
   <% hand.game_cards.each do |game_card| %>
-    <%= render :partial => 'cards/card', :locals => {
-      :card      => game_card.card, 
-      :container => hand, 
-      :game_card => game_card 
-    } %><br/>
+    <% if game_card.visible?(@current_user) %>
+      <%= render :partial => 'cards/card', :locals => {
+        :card      => game_card.card, 
+        :container => hand, 
+        :game_card => game_card 
+      } %><br/>
+    <% else %>
+      (Hidden Card)
+    <% end %>
   <% end %>
 </div>
 <div id="stack">stack</div>

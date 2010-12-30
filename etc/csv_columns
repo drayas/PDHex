@@ -1,0 +1,16 @@
+name, set, color, card_type - sub_type, power\toughness, flavor, rarity, casting cost, text, unknown, artist, number rr[00in set
+
+reject if arr.size < 12?
+
+name
+set
+color
+card_type - sub_type
+power\toughness
+flavor
+rarity
+casting cost
+text
+unknown
+artist
+number rr[00in set

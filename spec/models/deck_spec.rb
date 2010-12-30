@@ -18,7 +18,10 @@ describe Deck do
       @card = Card.new
     end
     it 'should be able to remove a card' do
-      @deck.cards.should_receive(:delete).with(@card)
+      card_deck = CardDeck.new
+      @deck.card_decks.should_receive(:find).and_return(card_deck)
+      card_deck.should_receive(:destroy)
+      @deck.should_receive(:reload)
       @deck.remove_card(@card)
     end
   end

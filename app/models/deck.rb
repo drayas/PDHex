@@ -7,7 +7,9 @@ class Deck < ActiveRecord::Base
   end
 
   def remove_card(card)
-    self.cards.delete(card)
+    cd = self.card_decks.find(:first, :conditions => ["card_id = ? and deck_id = ?", card.id, self.id])
+    cd.destroy
+    self.reload
   end
 
   def card_search(options = {})

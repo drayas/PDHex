@@ -57,7 +57,7 @@ class DecksController < ApplicationController
     end
 
     if @deck
-      redirect_to deck_path(@deck)
+      redirect_to deck_path(@deck, :search => params[:search])
     else
       redirect_to decks_path
     end
@@ -74,7 +74,7 @@ class DecksController < ApplicationController
     end
 
     if @deck
-      redirect_to deck_path(@deck)
+      redirect_to deck_path(@deck, :search => params[:search])
     else
       redirect_to decks_path
     end

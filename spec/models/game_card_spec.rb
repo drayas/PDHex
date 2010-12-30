@@ -2,6 +2,19 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe GameCard do
 
+  describe 'validations' do
+    before(:each) do
+      @valid_params = {}
+    end
+    it 'should be valid with a valid visibility' do
+      GameCard::VISIBILITY_TYPES.each {|visibility|
+        GameCard.new(@valid_params.merge({:visibility => visibility})).should be_valid
+      }
+    end
+    it 'should be invalid with an invalid visibility' do
+      GameCard.new(@valid_params.merge(:visibility => "not_a_visibility_type")).should_not be_valid
+    end
+  end
   describe 'action list' do
     before(:each) do
       @game_card = GameCard.new
@@ -54,5 +67,27 @@ describe GameCard do
       end
     end
   end #handle action
+
+  describe 'visibility' do 
+    before(:each) do
+      @user = User.new
+      @another_user = User.new
+      @game_user = GameUser.new(:user => @user)
+      @game_deck = GameDeck.new(:game_user => @game_user)
+      @game_card = GameCard.new(:game_deck => @game_deck)
+    end
+
+    it 'should only be visible to the owner if visibility type is player' do
+      @game_card.visibility = "player"
+      @game_card.visible?(@user).should be_true
+      @game_card.visible?(@another_user).should be_false
+    end
+
+    it 'should be visible to everyone if the visibility type is all' do
+      @game_card.visibility = "all"
+      @game_card.visible?(@user).should be_true
+      @game_card.visible?(@another_user).should be_true
+    end
+  end
 
 end # Main describe
