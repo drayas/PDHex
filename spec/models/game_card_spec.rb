@@ -38,6 +38,13 @@ describe GameCard do
         msg.should_not be_blank
       end
     end
+    describe 'move cards' do
+      it 'should move cards between the different game containers' do
+        @game_container.should_receive(:update_attribute).with(:game_card_ids, []).and_return(true)
+        @graveyard.should_receive(:update_attribute).with(:game_card_ids, [1]).and_return(true)
+        @game_card.move(@game_container, @graveyard)
+      end
+    end
     describe 'graveyard' do
       it 'should move the card to the graveyard' do
         @game_container.should_receive(:update_attribute).with(:game_card_ids, []).and_return(true)
