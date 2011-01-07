@@ -3,6 +3,8 @@
   <%= link_to "All games", games_path %>
 <% end %>
 <div id="game">
+  <div id="stack">stack</div>
+  <div id="selected_card">selected_card</div>
   <% @game.game_users.each_with_index do |game_user, idx| %>
     <div id="user_<%= idx %>" class="user">
       <%= h game_user.user.name %>
@@ -15,7 +17,7 @@
   $('.card_link').click(function(event) {
     event.stopImmediatePropagation();
     var $target = $(event.target);
-    show_card_actions($target.attr('card_id'), event.pageX, event.pageY);
+    show_card_actions($target.attr('game_card_id'), event.pageX, event.pageY);
     return false;
   });
 </script>

@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   }
   map.resources :games
   map.resources :game_cards, :member => {
-    :handle_action => :post
+    :handle_action => [:post, :get]
   }
   map.resources :users, :collection => {
     :login        => :get,

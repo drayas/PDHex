@@ -22,7 +22,17 @@ class GameDeck < ActiveRecord::Base
 
   def create_game_cards
     self.deck.cards.each do |card|
-      self.game_cards.create!(:card_id => card.id)
+      self.game_cards.create!(
+        :card_id    => card.id,
+        :is_tapped  => false,
+        :color      => card.color,
+        :power      => card.power,
+        :toughness  => card.toughness,
+        :text       => card.text,
+        :card_type       => card.card_type,
+        :card_sub_type   => card.card_sub_type,
+        :counters   => {} 
+      )
     end
   end
 

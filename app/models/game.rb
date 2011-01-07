@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
   #  {:user => u, :deck => d},
   #  {:user => u2, :deck => d1}
   #]
+  def self.test
+    Game.start!([{:user => User.first, :deck => Deck.last}, {:user => User.last, :deck => Deck.last}])
+  end
+
   def self.start!(players)
     # Guard clauses
     raise "Bad data structure!" unless players.is_a?(Array) && players.first.is_a?(Hash)

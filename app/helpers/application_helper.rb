@@ -59,5 +59,9 @@ module ApplicationHelper
     end
     result
   end
+  def pretty_stats_helper(power, toughness)
+    return "" if self.power.blank? && self.toughness.blank?
+    "#{self.power}/#{self.toughness}"
+  end
 
 end

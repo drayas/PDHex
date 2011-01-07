@@ -1,13 +1,14 @@
 <% container ||= nil %>
 <% game_card ||= nil %>
-<%= link_to card.name.titlecase, edit_card_path(card), :class => 'card_link', :card_id => card.id  %>
-<div id="card_actions_<%= card.id %>" class="card_action_container" style="display:none;">
+<% link_text = game_card.nil? ? card.name.titlecase : game_card.display_text(container)%>
+<%= link_to link_text, edit_card_path(card), :class => 'card_link', :game_card_id => game_card.try(:id), :card_id => card.id  %>
+<div id="card_actions_<%= game_card.try(:id) %>" class="card_action_container" style="display:none;">
   <% if container && game_card %>
     <% if game_card.action_list(container).empty? %>
       No actions!
     <% else %>
       <% for action in game_card.action_list(container) do  %>  
-        <%= link_to_function action[:display], "run_action('#{action[:code]}','#{action[:param_required]}');" %><br/>
+        <%= link_to_function action[:display], "run_action('#{game_card.id}','#{container.id}','#{action[:code]}','#{action[:param_required]}');" %><br/>
       <% end %>
     <% end %>
   <% end %>

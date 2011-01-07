@@ -1,19 +1,23 @@
 class GameCard < ActiveRecord::Base
+  include ApplicationHelper
   belongs_to :game_deck
   belongs_to :card
   validate :visibility_must_be_valid
+  serialize :counters, Hash
 
   # Parameter requirements:
   # :none, :number, :target, :number_and_target, :name_and_target
   ACTIONS = {
     :graveyard            => {:param_required => :none,               :display => "Send to graveyard"},
     :remove               => {:param_required => :none,               :display => "Remove card from the game"},
-    :play                 => {:param_required => :target,             :display => "Play this card"},
+    :play                 => {:param_required => :none,               :display => "Play this card"},
+    :hand                 => {:param_required => :none,               :display => "Move this card to your hand"},
     :draw                 => {:param_required => :number_and_target,  :display => "Draw card(s)"},
     :tap                  => {:param_required => :none,               :display => "Tap this card"},
     :add_counter          => {:param_required => :number,             :display => "Add counter(s)"},
     :remove_counter       => {:param_required => :number,             :display => "Remove counter(s)"},
     :deck_bottom          => {:param_required => :none,               :display => "Put this card at the bottom of your deck"},
+    :add_to_stack         => {:param_required => :none,               :display => "Add this card to the stack"},
     :deck_top             => {:param_required => :none,               :display => "Put this card at the top of your deck"},
     :deck_fetch           => {:param_required => :name_and_target,    :display => "Fetch a card from your deck"},
     :graveyard_fetch      => {:param_required => :name_and_target,    :display => "Fetch a card from your graveyard"}
@@ -37,11 +41,26 @@ class GameCard < ActiveRecord::Base
           :deck_top
         ])
       when 'in_play'
+        return format_actions([
+          :tap,
+          :add_to_stack,
+          :graveyard,
+          :hand,
+          :remove,
+          :deck_bottom,
+          :deck_top,
+          :add_counter,
+          :remove_counter
+        ])
     end
     return []
   end
   def format_actions(actions)
-    actions.map{|code| {:code => code, :display => ACTIONS[code][:display], :param_required => ACTIONS[code][:param_required]}}
+    actions = actions.map{|code| {:code => code, :display => ACTIONS[code][:display], :param_required => ACTIONS[code][:param_required]}}
+    # Update tap situation (show "Untap" if we're already tapped)
+    tap_action = actions.select{|hash| hash[:code] == :tap}.first
+    tap_action[:display] = "Untap" if tap_action && self.is_tapped?
+    actions
   end
 
   def move(from, to)
@@ -55,8 +74,20 @@ class GameCard < ActiveRecord::Base
     container = options[:container]
     code = options[:code]
     case code
+      when 'hand'
+        self.move(container, self.game_deck.hand)
       when 'graveyard'
         self.move(container, self.game_deck.graveyard)
+      when 'removed'
+        self.move(container, self.game_deck.removed)
+      when 'deck_top'
+        self.move(container, self.game_deck.library)
+      when 'deck_bottom'
+        self.move(container, self.game_deck.library)
+      when 'play'
+        self.move(container, self.game_deck.in_play)
+      when 'tap'
+        self.update_attribute(:is_tapped, !self.is_tapped?)
       else
         return [false, "You specified an undefined action code: #{code.inspect}"]
     end
@@ -75,5 +106,14 @@ class GameCard < ActiveRecord::Base
       return false
     end
     return true
+  end
+
+  def display_text(container = nil)
+    container_name = container.nil? ? "" : container.name
+    text = self.card.name.titlecase
+    text += " (T)" if self.is_tapped?
+    text += " #{pretty_stats_helper(self.power, self.toughness)}" if container_name == "in_play"
+    text += " #{render_cost(self.card.cost)}" if container_name == "hand"
+    text
   end
 end

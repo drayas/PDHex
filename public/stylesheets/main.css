@@ -327,17 +327,27 @@ form input {
   top: 30px;
   left: 175px;
   bottom: 10px;
-  right: 175px;
+  right: 220px;
   border: 1px solid black;
   background-size: 100%;
   color: white;
 }
-#stack {
+#selected_card {
   position: absolute;
   top: 30px;
+  height: 300px;
+  right: 10px;
+  width: 200px;
+  border: 1px solid black;
+  background-size: 100%;
+  color: black;
+}
+#stack {
+  position: absolute;
+  top: 340px;
   bottom: 10px;
   right: 10px;
-  width: 150px;
+  width: 200px;
   border: 1px solid black;
   background-size: 100%;
   color: white;

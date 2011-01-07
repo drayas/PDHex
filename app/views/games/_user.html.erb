@@ -1,8 +1,38 @@
-<div id="deck">deck</div>
-<div id="graveyard">graveyard</div>
-<div id="in_play">in_play</div>
+<div id="deck">
+  <% library = game_user.game_deck.library %>
+  Deck Size is <%= library.game_card_ids.size %>
+</div>
+<div id="graveyard">
+  <% graveyard = game_user.game_deck.graveyard %>
+  <% graveyard.game_cards.each do |game_card| %>
+    <% if game_card.visible?(@current_user) %>
+      <%= render :partial => 'cards/card', :locals => {
+        :card      => game_card.card, 
+        :container => graveyard, 
+        :game_card => game_card
+      } %><br/>
+    <% else %>
+      (Hidden Card)
+    <% end %>
+  <% end %>
+</div>
+<div id="in_play">
+  <% in_play = game_user.game_deck.in_play %>
+  <% in_play.game_cards.each do |game_card| %>
+    <% if game_card.visible?(@current_user) %>
+      <%= render :partial => 'cards/card', :locals => {
+        :card      => game_card.card, 
+        :container => in_play, 
+        :game_card => game_card 
+      } %><br/>
+    <% else %>
+      (Hidden Card)
+    <% end %>
+  <% end %>
+</div>
 <div id="hand">
   <% hand = game_user.game_deck.hand %>
+  Hand Size is <%= hand.game_card_ids.size %><br/>
   <% hand.game_cards.each do |game_card| %>
     <% if game_card.visible?(@current_user) %>
       <%= render :partial => 'cards/card', :locals => {
@@ -11,8 +41,7 @@
         :game_card => game_card 
       } %><br/>
     <% else %>
-      (Hidden Card)
+      (Hidden Card)<br/>
     <% end %>
   <% end %>
 </div>
-<div id="stack">stack</div>

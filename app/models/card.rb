@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+  include ApplicationHelper
   has_many :card_decks
   has_many :decks, :through => :card_decks
 
@@ -169,8 +170,7 @@ class Card < ActiveRecord::Base
   }
 
   def pretty_stats
-    return "" if self.power.blank? && self.toughness.blank?
-    "#{self.power}/#{self.toughness}"
+    pretty_stats_helper(self.power, self.toughness)
   end
 
   def color_must_be_valid
