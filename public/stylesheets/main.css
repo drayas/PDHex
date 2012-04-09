@@ -294,18 +294,18 @@ form input {
   top: 30px;
   left: 10px;
   height: 83px;
-  width: 60px;
+  width: 100px;
   border: 1px solid black;
-  background:url(/images/cards/card_back.jpg) no-repeat;
   background-size: 100%;
   color: white;
+  overflow: auto;
 }
 #deck {
   position: absolute;
   top: 30px;
-  left: 75px;
+  left: 115px;
   height: 83px;
-  width: 60px;
+  width: 50px;
   border: 1px solid black;
   background:url(/images/cards/card_back.jpg) no-repeat;
   background-size: 100%;
